@@ -22,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
         index = 0;
         GetSpawnVals(index);
         spawning = true;
+        timer = spawn_delay;
     }
     private void Update()
     {
@@ -34,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 timer += Time.deltaTime;
-                if (Game_Manager.instance.enemies.Count == 0 && !stop)
+                if (Game_Manager.instance.enemies.Count == 0 && !stop && spawn_amount <= 0)
                 {
                     UpdateRound();
                 }
@@ -60,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
         spawn_amount = spawn_amounts[index];
         spawn_delay = spawn_delays[index];
         spawning = true;
-        timer = spawn_delay;
+        timer = 0;
     }
 
     void Spawn()
