@@ -1,0 +1,153 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player_Control : MonoBehaviour
+{
+    public Selected_Object selected;
+    public Sell_Object sell;
+    enum Placeable_Object
+    {
+        Root,
+        Lemon,
+        Apple,
+        Carrot,
+        Pineapple,
+        Potato,
+        Peppers,
+        Acorn,
+        Mushroom,
+        Corn,
+        Coconut,
+        None
+    }
+
+    public List<int> placement_costs;
+
+    public SpriteRenderer selected_object_img;
+    bool placement_mode;
+    bool sell_mode;
+    Placeable_Object selected_object;
+    // Start is called before the first frame update
+    void Start()
+    {
+        selected_object = Placeable_Object.None;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            Game_Manager.instance.Pause_Unpause();
+        }
+        if (!Game_Manager.instance.paused)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SelectObject(Placeable_Object.Root);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                SelectObject(Placeable_Object.Lemon);
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                SellOn();
+            }
+            if (placement_mode)
+            {
+                if (Input.GetMouseButtonDown(0) && selected.valid_pos)
+                {
+                    PlaceObject(selected_object);
+                }
+            }
+            if (sell_mode)
+            {
+                if (Input.GetMouseButtonDown(0) && sell.valid_pos)
+                {
+                    SellObject(sell.transform.position);
+                }
+            }
+        }
+    }
+
+    void SelectObject(Placeable_Object obj)
+    {
+        if (selected_object == obj)
+        {
+            PlacementOff();
+        }
+        else
+        {
+            selected_object = obj;
+            PlacementOn();
+        }
+    }
+
+    void PlaceObject(Placeable_Object obj)
+    {
+        bool is_root = false;
+        if (obj == Placeable_Object.Root)
+        {
+            is_root = true;
+        }
+        int cost = placement_costs[(int)obj];
+        if (cost <= Game_Manager.instance.nutrients)
+        {
+            GameObject gameObject = Resources.Load<GameObject>("Prefabs/" + obj.ToString());
+            Instantiate(gameObject, Map_Manager.instance.NearestNodePos(selected.gameObject.transform.position),Quaternion.identity);
+            Map_Manager.instance.UpdateNode(selected.gameObject.transform.position, is_root, false);
+            cost = cost * -1;
+            Game_Manager.instance.UpdateNutrients(cost);
+            PlacementOff();
+        }
+        else
+        {
+            print("Not Enough Nutrients");
+        }
+    }
+
+    void SellObject(Vector3 pos)
+    {
+        Map_Manager.instance.UpdateNode(sell.gameObject.transform.position, !sell.Unit, true);
+        Game_Manager.instance.UpdateNutrients(25);
+        SellOff();
+    }
+
+    void PlacementOn()
+    {
+        SellOff();
+        selected.gameObject.SetActive(true);
+        placement_mode = true;
+        selected_object_img.sprite = Resources.Load<Sprite>("Placeable/" + selected_object.ToString());
+        if (selected_object == Placeable_Object.Root)
+        {
+            selected.Root = true;
+        }
+        else
+        {
+            selected.Root = false;
+        }
+    }
+
+    void PlacementOff()
+    {
+        selected.gameObject.SetActive(false);
+        placement_mode = false;
+        selected_object = Placeable_Object.None;
+    }
+
+    void SellOn()
+    {
+        PlacementOff();
+        sell_mode = true;
+        sell.gameObject.SetActive(true);
+    }
+
+    void SellOff()
+    {
+        sell_mode = false;
+        sell.gameObject.SetActive(false);
+    }
+}
