@@ -46,6 +46,7 @@ public class Sell_Object : MonoBehaviour
     private void OnEnable()
     {
         last_position = transform.position;
-        ValidatePosition();
+        valid_pos = ValidatePosition();
+        UpdateIndicator();
     }
 }

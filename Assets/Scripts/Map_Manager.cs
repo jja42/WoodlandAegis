@@ -218,21 +218,14 @@ public class Map_Manager : MonoBehaviour
         return n.isPath;
     }
 
-    public int NearbyRoots(Vector3 pos)
+    public int NearbyRoots(Node n)
     {
-        int x = Mathf.RoundToInt(pos.x);
-        int y = Mathf.RoundToInt(pos.y);
         int count = 0;
-        if (x == 11 || x == -12 || y == -6 || y == 7)
-        {
-            count++;
-        }
-
-        Node n = GetNode(pos);
         if(n == null)
         {
             return 0;
         }
+
         List<Node> neighbors = GetNeighbors(n);
         for(int i = 0; i< neighbors.Count; i++)
         {
@@ -267,6 +260,10 @@ public class Map_Manager : MonoBehaviour
             if (isRoot)
             {
                 n.isRoot = false;
+                if (n.isNutrient)
+                {
+                    Game_Manager.instance.UpdateNutrientRate(-5);
+                }
                 DestroyRoot(n.pos);
             }
             else
@@ -288,9 +285,14 @@ public class Map_Manager : MonoBehaviour
         {
             if (isRoot)
             {
+                print("Root?: " + n.isRoot + " Unit?: " + n.hasUnit + " Path?: " + n.isPath);
                 if (!n.isRoot && !n.hasUnit && !n.isPath)
                 {
-                    if (NearbyRoots(pos) > 0)
+                    if (IsEdge(n))
+                    {
+                        return true;
+                    }
+                    if (NearbyRoots(n) > 0)
                     {
                         return true;
                     }
@@ -310,18 +312,42 @@ public class Map_Manager : MonoBehaviour
             {
                 if (n.isRoot)
                 {
-                    List<Node> neighbors = GetNeighbors(n);
-                    for (int i = 0; i < neighbors.Count; i++)
+                    if (IsEdge(n))
                     {
-                        if (neighbors[i].isRoot)
+                        List<Node> nodes = GetNeighbors(n);
+                        for(int i = 0; i<nodes.Count; i++)
                         {
-                            if (NearbyRoots(neighbors[i].pos) < 2)
+                            if (!nodes[i].isRoot)
+                            {
+                                continue;
+                            }
+                            if (!IsEdge(nodes[i]))
                             {
                                 return false;
                             }
                         }
+                        return true;
                     }
-                    return true;
+                    else
+                    {
+                        List<Node> nodes = GetNeighbors(n);
+                        for (int i = 0; i < nodes.Count; i++)
+                        {
+                            if (!nodes[i].isRoot)
+                            {
+                                continue;
+                            }
+                            if (IsEdge(nodes[i]))
+                            {
+                                continue;
+                            }
+                            if(NearbyRoots(nodes[i]) < 2)
+                            {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
                 }
             }
             else
@@ -343,6 +369,17 @@ public class Map_Manager : MonoBehaviour
             return false;
         }
         return n.hasUnit;
+    }
+
+    bool IsEdge(Node n)
+    {
+        int x = (int)n.pos.x;
+        int y = (int)n.pos.y;
+        if (x == 11 || x == -12 || y == -6 || y == 7)
+        {
+            return true;
+        }
+        return false;
     }
 
     public Vector3 NearestNodePos(Vector3 pos)

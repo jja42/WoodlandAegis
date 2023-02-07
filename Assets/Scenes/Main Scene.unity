@@ -6657,7 +6657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: {fileID: 619420249}
   sell: {fileID: 788417695}
-  placement_costs: 190000001900000000000000000000000000000000000000
+  placement_costs: 000000001900000000000000000000000000000000000000
   selected_object_img: {fileID: 936348255}
 --- !u!114 &1181720222
 MonoBehaviour:
