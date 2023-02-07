@@ -13,9 +13,10 @@ public class Enemy_AI : MonoBehaviour
     Direction direction;
     Direction pastDirection;
     int damage;
-    int health;
+    public int health;
     public int id;
     bool fainting;
+    Collider2D col;
     public enum Direction
     {
         Down,
@@ -33,6 +34,7 @@ public class Enemy_AI : MonoBehaviour
         anim = GetComponent<Animator>();
         damage = 10;
         health = 30;
+        col = GetComponent<Collider2D>();
     }
     private void Update()
     {
@@ -150,6 +152,7 @@ public class Enemy_AI : MonoBehaviour
     {
         if (!fainting)
         {
+            col.enabled = false;
             fainting = true;
             pathfinding = false;
             anim.SetTrigger("FaintT");
