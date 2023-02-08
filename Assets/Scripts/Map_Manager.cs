@@ -7,22 +7,23 @@ public class Map_Manager : MonoBehaviour
     public static Map_Manager instance;
     int path_layerMask;
     int root_layerMask;
-    int nutrients_layerMask;
     int unit_layerMask;
+    int nutrients_layerMask;
     int max_x = 24;
     int max_y = 14;
     public Node[,] grid;
     public Vector3 start_pos;
     public Vector3 end_pos;
     public List<Vector3> path;
-    int nutrients_to_spawn;
+    public int nutrients_to_spawn;
+    public bool random_nutrient_spawn;
 
     private void Awake()
     {
         instance = this;
         path_layerMask = LayerMask.GetMask("Path");
-        root_layerMask = LayerMask.GetMask("Roots");
         nutrients_layerMask = LayerMask.GetMask("Nutrients");
+        root_layerMask = LayerMask.GetMask("Roots");
         unit_layerMask = LayerMask.GetMask("Units");
         grid = new Node[max_x, max_y];
         for (int i = 0; i < max_x; i++)
@@ -37,8 +38,10 @@ public class Map_Manager : MonoBehaviour
     private void Start()
     {
         path = GetPath(start_pos, end_pos);
-        nutrients_to_spawn = 9;
-        SpawnNutrients();
+        if (random_nutrient_spawn)
+        {
+            SpawnNutrients();
+        }
     }
     public class Node
     {
@@ -53,13 +56,15 @@ public class Map_Manager : MonoBehaviour
         public Node parent;
         public int x;
         public int y;
+        public int value;
         public List<Node> Neighbors { get; set; }
         public Node(Vector3 position, int x_index, int y_index)
         {
             isPath = Physics2D.OverlapCircle(position, .25f, instance.path_layerMask);
             isRoot = false;
-            isNutrient = false;
+            isNutrient = Physics2D.OverlapCircle(position, .25f, instance.nutrients_layerMask);
             hasUnit = false;
+            value = 0;
             h_cost = int.MaxValue;
             g_cost = 0;
             f_cost = 0;
@@ -285,7 +290,6 @@ public class Map_Manager : MonoBehaviour
         {
             if (isRoot)
             {
-                print("Root?: " + n.isRoot + " Unit?: " + n.hasUnit + " Path?: " + n.isPath);
                 if (!n.isRoot && !n.hasUnit && !n.isPath)
                 {
                     if (IsEdge(n))
@@ -369,6 +373,20 @@ public class Map_Manager : MonoBehaviour
             return false;
         }
         return n.hasUnit;
+    }
+
+    public int GetValue(Vector3 pos, bool isUnit)
+    {
+        if (isUnit) 
+        { 
+            Collider2D col = Physics2D.OverlapCircle(pos, .25f, instance.unit_layerMask);
+            Unit unit = col.gameObject.GetComponent<Unit>();
+            return unit.sell_value;
+        }
+        else
+        {
+            return 10;
+        }
     }
 
     bool IsEdge(Node n)
