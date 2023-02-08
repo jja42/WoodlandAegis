@@ -15,6 +15,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject Loss;
     public GameObject Begin_Button;
     public GameObject Popup;
+    bool popup_active;
 
     // Start is called before the first frame update
     void Start()
@@ -66,15 +67,20 @@ public class UI_Manager : MonoBehaviour
         Loss.SetActive(true);
     }
 
-    public IEnumerator Popup_UI()
+    public IEnumerator Popup_Routine()
     {
+        popup_active = true;
         Popup.SetActive(true);
-        yield return new WaitForSeconds(1.25f);
-        Popup_Off();
+        yield return new WaitForSeconds(.75f);
+        Popup.SetActive(false);
+        popup_active = false;
     }
 
-    public void Popup_Off()
+    public void Popup_UI()
     {
-        Popup.SetActive(false);
+        if (!popup_active)
+        {
+            StartCoroutine(Popup_Routine());
+        }
     }
 }

@@ -113,7 +113,7 @@ public class Player_Control : MonoBehaviour
         }
         else
         {
-            StartCoroutine(UI_Manager.instance.Popup_UI());
+           UI_Manager.instance.Popup_UI();
         }
     }
 
