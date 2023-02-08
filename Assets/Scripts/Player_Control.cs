@@ -113,7 +113,7 @@ public class Player_Control : MonoBehaviour
         }
         else
         {
-            print("Not Enough Nutrients");
+            StartCoroutine(UI_Manager.instance.Popup_UI());
         }
     }
 

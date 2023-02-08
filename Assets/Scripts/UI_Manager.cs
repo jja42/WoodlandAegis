@@ -14,6 +14,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject Victory;
     public GameObject Loss;
     public GameObject Begin_Button;
+    public GameObject Popup;
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +64,17 @@ public class UI_Manager : MonoBehaviour
     public void Loss_UI()
     {
         Loss.SetActive(true);
+    }
+
+    public IEnumerator Popup_UI()
+    {
+        Popup.SetActive(true);
+        yield return new WaitForSeconds(1.25f);
+        Popup_Off();
+    }
+
+    public void Popup_Off()
+    {
+        Popup.SetActive(false);
     }
 }

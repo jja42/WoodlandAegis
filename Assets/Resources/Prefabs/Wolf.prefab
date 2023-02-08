@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move_speed: 5
   anim: {fileID: 1088163768127303442}
+  health: 0
   id: 0
 --- !u!58 &1088163768127303455
 CircleCollider2D:

@@ -101,7 +101,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2.25
 --- !u!114 &1047046964288681248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,4 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sell_value: 15
   projectile: {fileID: 5916025457249776495, guid: bbfc6dd246ee35d4e8a807cde54d9ef5, type: 3}
-  range: 3
+  range: 2.25
