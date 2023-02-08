@@ -7,10 +7,12 @@ public class Projectile : MonoBehaviour
     public Transform target;
     public int damage;
     public int speed;
+    public float range;
+    Vector3 startpos;
 
     private void Start()
     {
-        Destroy(gameObject, 2);
+        startpos = transform.position;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,6 +28,11 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if(target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        if(Vector3.Distance(transform.position,startpos) > range)
         {
             Destroy(gameObject);
             return;

@@ -6,6 +6,8 @@ public class Player_Control : MonoBehaviour
 {
     public Selected_Object selected;
     public Sell_Object sell;
+    public GameObject Roots;
+    public GameObject Units;
     enum Placeable_Object
     {
         Root,
@@ -96,7 +98,14 @@ public class Player_Control : MonoBehaviour
         if (cost <= Game_Manager.instance.nutrients)
         {
             GameObject gameObject = Resources.Load<GameObject>("Prefabs/" + obj.ToString());
-            Instantiate(gameObject, Map_Manager.instance.NearestNodePos(selected.gameObject.transform.position),Quaternion.identity);
+            if (is_root)
+            {
+                Instantiate(gameObject, Map_Manager.instance.NearestNodePos(selected.gameObject.transform.position), Quaternion.identity, Roots.transform);
+            }
+            else
+            {
+                Instantiate(gameObject, Map_Manager.instance.NearestNodePos(selected.gameObject.transform.position), Quaternion.identity, Units.transform);
+            }
             Map_Manager.instance.UpdateNode(selected.gameObject.transform.position, is_root, false);
             cost = cost * -1;
             Game_Manager.instance.UpdateNutrients(cost);
@@ -110,8 +119,9 @@ public class Player_Control : MonoBehaviour
 
     void SellObject(Vector3 pos)
     {
+        int val = Map_Manager.instance.GetValue(sell.gameObject.transform.position, sell.Unit);
+        Game_Manager.instance.UpdateNutrients(val);
         Map_Manager.instance.UpdateNode(sell.gameObject.transform.position, !sell.Unit, true);
-        Game_Manager.instance.UpdateNutrients(25);
         SellOff();
     }
 

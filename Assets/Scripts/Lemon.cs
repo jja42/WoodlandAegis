@@ -2,46 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lemon : MonoBehaviour
+public class Lemon : Unit
 {
-    Transform target;
-    Enemy_AI enemy;
     public GameObject projectile;
-    float shoot_timer = 1.25f;
-    private void Update()
-    {
-        if (Game_Manager.instance.started && !Game_Manager.instance.paused)
-        {
-            if (shoot_timer >= 1.25f && target != null)
-            {
-                Shoot();
-            }
-            else
-            {
-                shoot_timer += Time.deltaTime;
-            }
-        }
-    }
+    public float range;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void Act()
     {
-        target = collision.transform;
-        enemy = target.gameObject.GetComponent<Enemy_AI>();
+        Shoot();
     }
-
     void Shoot()
     {
-        if(enemy.health <= 0)
+        if (enemy.health <= 0)
         {
             target = null;
             return;
         }
         if (target != null)
         {
-            GameObject obj = Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(projectile, transform.position, Quaternion.identity, transform);
             Projectile proj = obj.GetComponent<Projectile>();
+            proj.range = range;
             proj.target = target;
-            shoot_timer = 0;
+            act_timer = 0;
         }
     }
 }
