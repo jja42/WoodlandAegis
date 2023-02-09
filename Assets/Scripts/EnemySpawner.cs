@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawn_delay;
     float timer;
     public int spawn_amount;
-    public GameObject enemy;
+    public GameObject[] enemy;
     public Vector3 spawnpos;
     bool spawning;
     bool stop;
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
         timer = 0;
         if (spawn_amount > 0)
         {
-            GameObject obj = Instantiate(enemy, spawnpos, Quaternion.identity, Enemies.transform);
+            GameObject obj = Instantiate(enemy[0], spawnpos, Quaternion.identity, Enemies.transform);
             Enemy_AI ai = obj.GetComponent<Enemy_AI>();
             ai.id = id;
             id++;
