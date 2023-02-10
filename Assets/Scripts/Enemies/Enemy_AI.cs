@@ -12,11 +12,11 @@ public class Enemy_AI : MonoBehaviour
     public Animator anim;
     Direction direction;
     Direction pastDirection;
-    int damage;
+    protected int damage;
     public int health;
     public int id;
-    bool fainting;
-    Collider2D col;
+    protected bool fainting;
+    protected Collider2D col;
     public enum Direction
     {
         Down,
@@ -26,48 +26,26 @@ public class Enemy_AI : MonoBehaviour
         None
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         current_node = 0;
         direction = Direction.None;
         pastDirection = direction;
         anim = GetComponent<Animator>();
-        damage = 10;
-        health = 30;
         col = GetComponent<Collider2D>();
+        path = Map_Manager.instance.path;
+        pathfinding = true;
+        end = path[path.Count - 1] + (path[path.Count - 1] - path[path.Count - 2]);
+        path.Add(end);
+        ChangeDir();
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (!Game_Manager.instance.paused && Game_Manager.instance.started)
         {
-            if (path == null)
-            {
-                path = Map_Manager.instance.path;
-                pathfinding = true;
-                end = path[path.Count-1] + (path[path.Count - 1] - path[path.Count - 2]);
-                path.Add(end);
-                ChangeDir();
-            }
             if (pathfinding)
             {
-                if (transform.position == path[current_node])
-                {
-                    current_node += 1;
-                    ChangeDir();
-                }
-                if (current_node < path.Count)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, path[current_node], Time.deltaTime * move_speed);
-                    return;
-                }
-                else
-                {
-                    pathfinding = false;
-                    Game_Manager.instance.TakeDamage(damage);
-                    Game_Manager.instance.RemoveEnemy(id);
-                    Destroy(gameObject,1);
-                    return;
-                }
+                Pathfind();
             }
         }
     }
@@ -80,19 +58,19 @@ public class Enemy_AI : MonoBehaviour
         }
         Vector3 dir = path[current_node] - transform.position;
         dir = dir.normalized;
-        if (dir.x > 0 && Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        if (dir.x > 0)
         {
             direction = Direction.Right;
         }
-        if (dir.x < 0 && Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        if (dir.x < 0)
         {
             direction = Direction.Left;
         }
-        if (dir.y > 0 && Mathf.Abs(dir.y) > Mathf.Abs(dir.x))
+        if (dir.y > 0)
         {
             direction = Direction.Up;
         }
-        if (dir.y < 0 && Mathf.Abs(dir.y) > Mathf.Abs(dir.x))
+        if (dir.y < 0)
         {
             direction = Direction.Down;
         }
@@ -158,6 +136,28 @@ public class Enemy_AI : MonoBehaviour
             anim.SetTrigger("FaintT");
             Game_Manager.instance.RemoveEnemy(id);
             Destroy(gameObject, 1.5f);
+        }
+    }
+
+    void Pathfind()
+    {
+        if (transform.position == path[current_node])
+        {
+            current_node += 1;
+            ChangeDir();
+        }
+        if (current_node < path.Count)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, path[current_node], Time.deltaTime * move_speed);
+            return;
+        }
+        else
+        {
+            pathfinding = false;
+            Game_Manager.instance.TakeDamage(damage);
+            Game_Manager.instance.RemoveEnemy(id);
+            Destroy(gameObject, 1);
+            return;
         }
     }
 }
