@@ -5,13 +5,18 @@ using System.Linq;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public List<int> spawn_amounts;
+    public List<string> round_spawns;
     public List<float> spawn_delays;
-    int index;
+    int round_index;
+    
+    public List<string> spawn_list;
     public float spawn_delay;
     float timer;
     public int spawn_amount;
-    public GameObject[] enemy;
+    public int total_spawn_amount;
+    int spawn_index;
+
+    public List<GameObject> enemies_to_spawn;
     public Vector3 spawnpos;
     bool spawning;
     bool stop;
@@ -20,8 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        index = 0;
-        GetSpawnVals(index);
+        round_index = 0;
+        GetSpawnVals(round_index);
         spawning = true;
         timer = spawn_delay;
     }
@@ -36,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
             else
             {
                 timer += Time.deltaTime;
-                if (Game_Manager.instance.enemies.Count == 0 && !stop && spawn_amount <= 0)
+                if (Game_Manager.instance.enemies.Count == 0 && !stop && total_spawn_amount <= 0)
                 {
                     UpdateRound();
                 }
@@ -48,8 +53,8 @@ public class EnemySpawner : MonoBehaviour
         Game_Manager.instance.ProgressRound();
         if (Game_Manager.instance.current_round <= Game_Manager.instance.last_round)
         {
-            index = Game_Manager.instance.current_round - 1;
-            GetSpawnVals(index);
+            round_index = Game_Manager.instance.current_round - 1;
+            GetSpawnVals(round_index);
         }
         else
         {
@@ -58,24 +63,70 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void GetSpawnVals(int index)
-    {
-        spawn_amount = spawn_amounts[index];
-        spawn_delay = spawn_delays[index];
+    {   
+        string[] strings = round_spawns[index].Split(",");
+        spawn_list = strings.ToList();
+        total_spawn_amount = spawn_list.Count;
+        ParseSpawns();
+        spawn_delay = spawn_delays[index/5];
         spawning = true;
         timer = 0;
     }
 
     void Spawn()
     {
-        timer = 0;
-        if (spawn_amount > 0)
+        if (total_spawn_amount > 0)
         {
-            GameObject obj = Instantiate(enemy[0], spawnpos, Quaternion.identity, Enemies.transform);
+            timer = 0;
+            GameObject obj = Instantiate(enemies_to_spawn[spawn_index], spawnpos, Quaternion.identity, Enemies.transform);
             Enemy_AI ai = obj.GetComponent<Enemy_AI>();
             ai.id = id;
             id++;
             spawn_amount--;
             Game_Manager.instance.enemies.Add(ai);
+            if (spawn_amount == 0)
+            {
+                total_spawn_amount--;
+                spawn_list.RemoveAt(0);
+                if(total_spawn_amount > 0)
+                    ParseSpawns();
+            }
+        }
+        else
+        {
+            spawning = false;
+        }
+    }
+
+    void ParseSpawns()
+    {
+        string[] substrings = spawn_list[0].Split("-");
+        spawn_amount = int.Parse(substrings[1]);
+        spawn_index = Spawn_Switch(substrings[0]);
+    }
+
+    int Spawn_Switch(string str)
+    {
+        switch (str)
+        {
+            case "B":
+                return 0;
+            case "FB":
+                return 1;
+            case "R":
+                return 2;
+            case "FR":
+                return 3;
+            case "W":
+                return 4;
+            case "FW":
+                return 5;
+            case "S":
+                return 6;
+            case "FS":
+                return 7;
+            default:
+                return 0;
         }
     }
 }

@@ -23,7 +23,7 @@ public class Game_Manager : MonoBehaviour
         health = 100;
         nutrients = 100;
         nutrient_rate = 5;
-        last_round = 5;
+        last_round = 20;
         can_pause = true;
     }
 
@@ -42,7 +42,7 @@ public class Game_Manager : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        //health -= damage;
         if(health <= 0)
         {
             health = 0;

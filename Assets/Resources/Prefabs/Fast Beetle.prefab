@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6426771970680691337, guid: d93a2c66d10cb734680fd95d8be41f7d, type: 3}
+      propertyPath: move_speed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2117350456606263680, guid: d93a2c66d10cb734680fd95d8be41f7d, type: 3}
       propertyPath: m_Name
       value: Fast Beetle
@@ -61,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2117350456606263686, guid: d93a2c66d10cb734680fd95d8be41f7d, type: 3}
       propertyPath: move_speed
-      value: 10
+      value: 7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93a2c66d10cb734680fd95d8be41f7d, type: 3}

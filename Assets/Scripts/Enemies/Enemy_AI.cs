@@ -17,6 +17,7 @@ public class Enemy_AI : MonoBehaviour
     public int id;
     protected bool fainting;
     protected Collider2D col;
+    protected bool fast;
     public enum Direction
     {
         Down,

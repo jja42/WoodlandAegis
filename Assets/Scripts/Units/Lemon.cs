@@ -13,10 +13,13 @@ public class Lemon : Unit
     }
     void Shoot()
     {
-        if (enemy.health <= 0)
+        if (enemy != null)
         {
-            target = null;
-            return;
+            if (enemy.health <= 0)
+            {
+                target = null;
+                return;
+            }
         }
         if (target != null)
         {

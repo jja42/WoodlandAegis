@@ -10,7 +10,6 @@ public class Snake : Enemy_AI
         base.Start();
         damage = 20;
         health = 40;
-        move_speed = 5;
     }
 
     // Update is called once per frame

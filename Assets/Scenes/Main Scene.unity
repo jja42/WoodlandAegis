@@ -6817,7 +6817,7 @@ MonoBehaviour:
   sell: {fileID: 788417695}
   Roots: {fileID: 1903784773}
   Units: {fileID: 165195260}
-  placement_costs: 140000001e00000000000000000000000000000000000000
+  placement_costs: 140000001e00000000000000000000000000000000000000000000000000000000000000
   selected_object_img: {fileID: 936348255}
 --- !u!114 &1181720222
 MonoBehaviour:
@@ -6831,16 +6831,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f853023b64e08a43bd0c10f61bc7bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn_amounts: 020000000400000006000000090000000c000000
+  round_spawns:
+  - B-4
+  - B-6
+  - B-9
+  - S-6
+  - S-9
+  - S-12
+  - B-2,S-4,B-2,S-4,B-2,S-4
+  - B-4,S-6,B-2,S-8
+  - B-6,S-6, B-8,S-8
+  - W-12
+  - W-14
+  - W-16
+  - B-2,W-3,B-4,W-5,B-6,W-7
+  - B-2,W-4,B-4,W-6,B-6,W-10
+  - R-13
+  - FB-2,S-4,W-6,FB-4,S-8,W-12,FB-6
+  - FB-8,S-2,W-4,FB-10,S-4,W-8
+  - FB-4,FS-4,W-2,FB-4,FS-4,W-6,FS-6,W-2,FS-4,W-8
+  - FW-4,FS-6,FB-8,FW-6,FS-8,FB-10,FW-8
+  - FW-4,R-2,FW-6,R-3,FW-8,R-4
+  - FW-6,FB-10,FS-6,FW-6,FS-6,FB-10,FW-8,FB-10,FS-8
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   spawn_delays:
-  - 3
-  - 2.5
+  - 2
   - 1.75
+  - 1.5
+  - 1.25
   - 1
+  - 0.75
   - 0.5
+  spawn_list: []
   spawn_delay: 3
   spawn_amount: 0
-  enemy: {fileID: 1088163768127303451, guid: 4f5c98cc284ae7e4e834072d8cb8e992, type: 3}
+  total_spawn_amount: 0
+  enemies_to_spawn:
+  - {fileID: 2117350456606263680, guid: d93a2c66d10cb734680fd95d8be41f7d, type: 3}
+  - {fileID: 3650504977270721701, guid: cd3a4ae35507e1549b03019521f9dd22, type: 3}
+  - {fileID: 8261398115998901281, guid: b76050073a7328a49b0e2d22496cbec7, type: 3}
+  - {fileID: 7501086009694097289, guid: 4459681f22802bf4696d8db7cac8735a, type: 3}
+  - {fileID: 1088163768127303451, guid: 4f5c98cc284ae7e4e834072d8cb8e992, type: 3}
+  - {fileID: 8123917837691206291, guid: 43dc134fdc2859a448555d38bd57d92e, type: 3}
+  - {fileID: 2479041896755106175, guid: 7bae2f46d0a7a3246902406a9344795e, type: 3}
+  - {fileID: 513391365232203911, guid: 85243375d6b217c49805f9caeaaf1e2d, type: 3}
   spawnpos: {x: -13, y: 3, z: 0}
   Enemies: {fileID: 1819082984}
 --- !u!1 &1268683306

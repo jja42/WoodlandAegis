@@ -8,9 +8,8 @@ public class Wolf : Enemy_AI
     protected override void Start()
     {
         base.Start();
-        damage = 10;
+        damage = 20;
         health = 80;
-        move_speed = 5;
     }
 
     // Update is called once per frame
