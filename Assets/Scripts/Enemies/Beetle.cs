@@ -9,7 +9,6 @@ public class Beetle : Enemy_AI
     {
         base.Start();
         damage = 10;
-        health = 20;
     }
 
     // Update is called once per frame

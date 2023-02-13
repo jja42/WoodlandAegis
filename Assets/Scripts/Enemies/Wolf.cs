@@ -9,7 +9,6 @@ public class Wolf : Enemy_AI
     {
         base.Start();
         damage = 20;
-        health = 80;
     }
 
     // Update is called once per frame

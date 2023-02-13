@@ -14,7 +14,7 @@ public class Map_Manager : MonoBehaviour
     public Node[,] grid;
     public Vector3 start_pos;
     public Vector3 end_pos;
-    public List<Vector3> path;
+    List<Vector3> path;
     public int nutrients_to_spawn;
     public bool random_nutrient_spawn;
 
@@ -252,7 +252,7 @@ public class Map_Manager : MonoBehaviour
                 n.isRoot = true;
                 if (n.isNutrient)
                 {
-                    Game_Manager.instance.UpdateNutrientRate(5);
+                    Game_Manager.instance.UpdateNutrientRate(1);
                 }
             }
             else
@@ -267,7 +267,7 @@ public class Map_Manager : MonoBehaviour
                 n.isRoot = false;
                 if (n.isNutrient)
                 {
-                    Game_Manager.instance.UpdateNutrientRate(-5);
+                    Game_Manager.instance.UpdateNutrientRate(-1);
                 }
                 DestroyRoot(n.pos);
             }
@@ -416,5 +416,15 @@ public class Map_Manager : MonoBehaviour
     {
         Collider2D col = Physics2D.OverlapCircle(position, .25f, instance.unit_layerMask);
         Destroy(col.gameObject);
+    }
+
+    public List<Vector3> GetPath()
+    {
+        List<Vector3> list = new List<Vector3>();
+        foreach(Vector3 vector in path)
+        {
+            list.Add(vector);
+        }
+        return list;
     }
 }

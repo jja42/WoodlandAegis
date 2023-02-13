@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_AI : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Enemy_AI : MonoBehaviour
     Direction pastDirection;
     protected int damage;
     public int health;
+    protected int maxhealth;
     public int id;
     protected bool fainting;
     protected Collider2D col;
     protected bool fast;
+    public Slider hp_slider;
     public enum Direction
     {
         Down,
@@ -34,11 +37,12 @@ public class Enemy_AI : MonoBehaviour
         pastDirection = direction;
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
-        path = Map_Manager.instance.path;
+        path = Map_Manager.instance.GetPath();
         pathfinding = true;
         end = path[path.Count - 1] + (path[path.Count - 1] - path[path.Count - 2]);
         path.Add(end);
         ChangeDir();
+        maxhealth = health;
     }
     protected virtual void Update()
     {
@@ -121,6 +125,7 @@ public class Enemy_AI : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         health -= dmg;
+        hp_slider.value = (float)health / maxhealth;
         if(health <= 0)
         {
             Faint();

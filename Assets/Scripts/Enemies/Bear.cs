@@ -9,7 +9,6 @@ public class Bear : Enemy_AI
     {
         base.Start();
         damage = 50;
-        health = 160;
     }
 
     // Update is called once per frame

@@ -64,6 +64,10 @@ PrefabInstance:
       value: Fast Snake
       objectReference: {fileID: 0}
     - target: {fileID: 4023596458098821063, guid: 7bae2f46d0a7a3246902406a9344795e, type: 3}
+      propertyPath: health
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023596458098821063, guid: 7bae2f46d0a7a3246902406a9344795e, type: 3}
       propertyPath: move_speed
       value: 7.5
       objectReference: {fileID: 0}

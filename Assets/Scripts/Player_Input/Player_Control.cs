@@ -97,7 +97,7 @@ public class Player_Control : MonoBehaviour
         int cost = placement_costs[(int)obj];
         if (cost <= Game_Manager.instance.nutrients)
         {
-            GameObject gameObject = Resources.Load<GameObject>("Prefabs/" + obj.ToString());
+            GameObject gameObject = Resources.Load<GameObject>("Prefabs/Placeable/" + obj.ToString());
             if (is_root)
             {
                 Instantiate(gameObject, Map_Manager.instance.NearestNodePos(selected.gameObject.transform.position), Quaternion.identity, Roots.transform);
