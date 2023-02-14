@@ -25,7 +25,6 @@ public class Lemon : Unit
         {
             GameObject obj = Instantiate(projectile, transform.position, Quaternion.identity, transform);
             Seeking_Projectile proj = obj.GetComponent<Seeking_Projectile>();
-            proj.range = range;
             proj.target = target;
             act_timer = 0;
         }

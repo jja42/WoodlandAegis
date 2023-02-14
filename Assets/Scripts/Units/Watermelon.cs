@@ -22,12 +22,7 @@ public class Watermelon : Unit
         }
         if (target != null)
         {
-            GameObject obj = Instantiate(projectiles, transform.position, Quaternion.identity, transform);
-            Projectile[] projectile_array = obj.GetComponentsInChildren<Projectile>();
-            foreach (Projectile proj in projectile_array)
-            {
-                proj.range = range;
-            }
+            Instantiate(projectiles, transform.position, Quaternion.identity, transform);
             act_timer = 0;
         }
     }

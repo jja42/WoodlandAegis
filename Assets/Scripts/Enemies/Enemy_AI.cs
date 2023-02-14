@@ -21,6 +21,9 @@ public class Enemy_AI : MonoBehaviour
     protected Collider2D col;
     protected bool fast;
     public Slider hp_slider;
+    float poison_timer;
+    int num_poison_ticks;
+    int poison_damage;
     public enum Direction
     {
         Down,
@@ -51,6 +54,15 @@ public class Enemy_AI : MonoBehaviour
             if (pathfinding)
             {
                 Pathfind();
+            }
+            if(num_poison_ticks > 0)
+            {
+                poison_timer+= Time.deltaTime;
+                if(poison_timer >= 1)
+                {
+                    num_poison_ticks--;
+                    TakeDamage(poison_damage);
+                }
             }
         }
     }
@@ -130,6 +142,12 @@ public class Enemy_AI : MonoBehaviour
         {
             Faint();
         }
+    }
+
+    public void Poison(int num_ticks, int damage)
+    {
+        poison_damage = damage;
+        num_poison_ticks = num_ticks;
     }
 
     void Faint()

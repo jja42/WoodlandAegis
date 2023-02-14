@@ -164,9 +164,43 @@ public class Map_Manager : MonoBehaviour
     List<Node> GetNeighbors(Node node)
     {
         List<Node> Neighbors = new List<Node>();
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                if (i == 0 && j == 0)
+                {
+                    continue;
+                }
+                int new_x = node.x + i;
+                int new_y = node.y + j;
+                if (new_x > -1 && new_x < max_x)
+                {
+                    if (new_y > -1 && new_y < max_y)
+                    {
+                        Neighbors.Add(grid[new_x, new_y]);
+                    }
+                }
+            }
+        }
+
+        foreach(Node n in Neighbors)
+        {
+            if (!n.isPath)
+            {
+                Neighbors.Remove(n);
+            }
+        }
+        return Neighbors;
+    }
+
+    public List<Node> GetUnitPathNeighbors(Vector3 pos)
+    {
+        Node node = GetNode(pos);
+        List<Node> Neighbors = new List<Node>();
         if (node.x > 0)
         {
-            Neighbors.Add(grid[node.x-1,node.y]);
+            Neighbors.Add(grid[node.x - 1, node.y]);
         }
         if (node.x + 1 < max_x)
         {
@@ -181,7 +215,6 @@ public class Map_Manager : MonoBehaviour
             Neighbors.Add(grid[node.x, node.y + 1]);
         }
         return Neighbors;
-
     }
 
     public List<Vector3> GetPath(Vector3 startpos, Vector3 destpos)

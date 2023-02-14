@@ -13,14 +13,10 @@ public class Player_Control : MonoBehaviour
         Root,
         Lemon,
         Apple,
-        Carrot,
         Pineapple,
-        Potato,
-        Peppers,
-        Acorn,
-        Mushroom,
+        Watermelon,
         Corn,
-        Coconut,
+        Potato,
         None
     }
 
@@ -52,6 +48,10 @@ public class Player_Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.L))
             {
                 SelectObject(Placeable_Object.Lemon);
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                SelectObject(Placeable_Object.Watermelon);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {

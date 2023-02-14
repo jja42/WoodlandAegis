@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: -0.71, y: -0.71, z: 0}
 --- !u!1 &302394376164648305
 GameObject:
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: 0.71, y: -0.71, z: 0}
 --- !u!1 &1634115625052668540
 GameObject:
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: 0, y: -1, z: 0}
 --- !u!1 &2541147074727774225
 GameObject:
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: 0, y: 1, z: 0}
 --- !u!1 &2541147076400709560
 GameObject:
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: 1, y: 0, z: 0}
 --- !u!1 &3775555572306866270
 GameObject:
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: 0.71, y: 0.71, z: 0}
 --- !u!1 &5273234789717386248
 GameObject:
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: -0.71, y: 0.71, z: 0}
 --- !u!1 &5683077819180050016
 GameObject:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   speed: 20
-  range: 0
+  range: 1.75
   direction: {x: -1, y: 0, z: 0}
 --- !u!1 &5876355370861085076
 GameObject:
