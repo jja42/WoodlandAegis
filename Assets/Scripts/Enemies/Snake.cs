@@ -10,10 +10,4 @@ public class Snake : Enemy_AI
         base.Start();
         damage = 20;
     }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

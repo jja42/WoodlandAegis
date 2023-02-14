@@ -35,7 +35,7 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Game_Manager.instance.Pause_Unpause();
         }
@@ -52,6 +52,10 @@ public class Player_Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 SelectObject(Placeable_Object.Watermelon);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SelectObject(Placeable_Object.Potato);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {

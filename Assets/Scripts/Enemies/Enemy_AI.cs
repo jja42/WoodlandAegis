@@ -24,6 +24,7 @@ public class Enemy_AI : MonoBehaviour
     float poison_timer;
     int num_poison_ticks;
     int poison_damage;
+    public bool is_poisoned;
     public enum Direction
     {
         Down,
@@ -55,13 +56,22 @@ public class Enemy_AI : MonoBehaviour
             {
                 Pathfind();
             }
-            if(num_poison_ticks > 0)
+            if (is_poisoned)
             {
-                poison_timer+= Time.deltaTime;
-                if(poison_timer >= 1)
+                if (num_poison_ticks > 0)
                 {
-                    num_poison_ticks--;
-                    TakeDamage(poison_damage);
+                    poison_timer += Time.deltaTime;
+                    if (poison_timer >= 1)
+                    {
+                        poison_timer = 0;
+                        num_poison_ticks--;
+                        TakeDamage(poison_damage);
+                    }
+                }
+                else
+                {
+                    is_poisoned = false;
+                    poison_timer = 0;
                 }
             }
         }
@@ -148,6 +158,7 @@ public class Enemy_AI : MonoBehaviour
     {
         poison_damage = damage;
         num_poison_ticks = num_ticks;
+        is_poisoned = true;
     }
 
     void Faint()

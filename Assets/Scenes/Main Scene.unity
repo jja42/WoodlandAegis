@@ -6611,7 +6611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1112606585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7012,7 +7012,7 @@ MonoBehaviour:
   sell: {fileID: 788417695}
   Roots: {fileID: 1903784773}
   Units: {fileID: 165195260}
-  placement_costs: 140000000000000000000000000000000000000000000000000000000000000000000000
+  placement_costs: 000000000000000000000000000000000000000000000000000000000000000000000000
   selected_object_img: {fileID: 936348255}
 --- !u!114 &1181720222
 MonoBehaviour:
@@ -7063,7 +7063,7 @@ MonoBehaviour:
   - 0.5
   - 0.5
   - 0.5
-  - 0.75
+  - 0.5
   - 0.5
   spawn_list: []
   spawn_delay: 3

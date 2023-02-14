@@ -10,10 +10,4 @@ public class Beetle : Enemy_AI
         base.Start();
         damage = 10;
     }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

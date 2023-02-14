@@ -10,10 +10,4 @@ public class Bear : Enemy_AI
         base.Start();
         damage = 50;
     }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

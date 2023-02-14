@@ -164,6 +164,29 @@ public class Map_Manager : MonoBehaviour
     List<Node> GetNeighbors(Node node)
     {
         List<Node> Neighbors = new List<Node>();
+        if (node.x > 0)
+        {
+            Neighbors.Add(grid[node.x - 1, node.y]);
+        }
+        if (node.x + 1 < max_x)
+        {
+            Neighbors.Add(grid[node.x + 1, node.y]);
+        }
+        if (node.y > 0)
+        {
+            Neighbors.Add(grid[node.x, node.y - 1]);
+        }
+        if (node.y + 1 < max_y)
+        {
+            Neighbors.Add(grid[node.x, node.y + 1]);
+        }
+        return Neighbors;
+    }
+
+    public List<Node> GetUnitPathNeighbors(Vector3 pos)
+    {
+        Node node = GetNode(pos);
+        List<Node> Neighbors = new List<Node>();
         for (int i = -1; i < 2; i++)
         {
             for (int j = -1; j < 2; j++)
@@ -183,36 +206,20 @@ public class Map_Manager : MonoBehaviour
                 }
             }
         }
-
-        foreach(Node n in Neighbors)
+        List<Node> nodes_to_remove = new List<Node>();
+        foreach (Node n in Neighbors)
         {
             if (!n.isPath)
             {
-                Neighbors.Remove(n);
+                nodes_to_remove.Add(n);
             }
         }
-        return Neighbors;
-    }
-
-    public List<Node> GetUnitPathNeighbors(Vector3 pos)
-    {
-        Node node = GetNode(pos);
-        List<Node> Neighbors = new List<Node>();
-        if (node.x > 0)
+        foreach(Node n1 in nodes_to_remove)
         {
-            Neighbors.Add(grid[node.x - 1, node.y]);
-        }
-        if (node.x + 1 < max_x)
-        {
-            Neighbors.Add(grid[node.x + 1, node.y]);
-        }
-        if (node.y > 0)
-        {
-            Neighbors.Add(grid[node.x, node.y - 1]);
-        }
-        if (node.y + 1 < max_y)
-        {
-            Neighbors.Add(grid[node.x, node.y + 1]);
+            if (Neighbors.Contains(n1))
+            {
+                Neighbors.Remove(n1);
+            }
         }
         return Neighbors;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Potato : Unit
 {
-    public List<Map_Manager.Node> nodes_in_range;
+    List<Map_Manager.Node> nodes_in_range;
     public GameObject spawn;
     public int spawn_max;
     public int spawn_count;
@@ -28,7 +28,11 @@ public class Potato : Unit
             spawn_index = Random.Range(0, nodes_in_range.Count);
             spawn_x_offset = Random.Range(-.25f, .25f);
             spawn_y_offset = Random.Range(-.25f, .25f);
-            Instantiate(spawn, nodes_in_range[spawn_index].pos + new Vector3(spawn_x_offset,spawn_y_offset), Quaternion.identity);
+            GameObject obj = Instantiate(spawn, nodes_in_range[spawn_index].pos + new Vector3(spawn_x_offset,spawn_y_offset), Quaternion.identity);
+            Potato_Spawn potato = obj.GetComponent<Potato_Spawn>();
+            potato.parent = this;
+            spawn_count++;
         }
+        act_timer = 0;
     }
 }

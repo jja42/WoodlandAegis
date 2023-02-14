@@ -10,10 +10,4 @@ public class Wolf : Enemy_AI
         base.Start();
         damage = 20;
     }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
 }

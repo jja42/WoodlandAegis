@@ -18,7 +18,7 @@ public class Unit : MonoBehaviour
     {
         if (Game_Manager.instance.started && !Game_Manager.instance.paused)
         {
-            if (act_timer >= act_timeframe && target != null)
+            if (act_timer >= act_timeframe)
             {
                 Act();
             }
