@@ -132,7 +132,6 @@ public class Player_Control : MonoBehaviour
     void PlacementOn()
     {
         SellOff();
-        selected.gameObject.SetActive(true);
         placement_mode = true;
         selected_object_img.sprite = Resources.Load<Sprite>("Placeable/" + selected_object.ToString());
         if (selected_object == Placeable_Object.Root)
@@ -143,6 +142,7 @@ public class Player_Control : MonoBehaviour
         {
             selected.Root = false;
         }
+        selected.gameObject.SetActive(true);
     }
 
     void PlacementOff()
