@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5916025457249776490}
   - component: {fileID: 5916025457249776493}
   - component: {fileID: 5916025457249776492}
-  - component: {fileID: -4920843122762451663}
+  - component: {fileID: -7326790691836779090}
   m_Layer: 10
   m_Name: Lemon_Projectile
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &-4920843122762451663
+--- !u!114 &-7326790691836779090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5916025457249776495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1dd545d0bb55b4db043e9d9e56627f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6000d529991ae20478852344cb64cab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   damage: 10
-  speed: 10
+  speed: 0
   range: 0

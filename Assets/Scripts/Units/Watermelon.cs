@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lemon : Unit
+public class Watermelon : Unit
 {
-    public GameObject projectile;
+    public GameObject projectiles;
     public float range;
-
     protected override void Act()
     {
         Shoot();
@@ -23,10 +22,12 @@ public class Lemon : Unit
         }
         if (target != null)
         {
-            GameObject obj = Instantiate(projectile, transform.position, Quaternion.identity, transform);
-            Seeking_Projectile proj = obj.GetComponent<Seeking_Projectile>();
-            proj.range = range;
-            proj.target = target;
+            GameObject obj = Instantiate(projectiles, transform.position, Quaternion.identity, transform);
+            Projectile[] projectile_array = obj.GetComponentsInChildren<Projectile>();
+            foreach (Projectile proj in projectile_array)
+            {
+                proj.range = range;
+            }
             act_timer = 0;
         }
     }
