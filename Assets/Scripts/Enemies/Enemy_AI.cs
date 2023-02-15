@@ -25,6 +25,8 @@ public class Enemy_AI : MonoBehaviour
     int num_poison_ticks;
     int poison_damage;
     public bool is_poisoned;
+    public bool is_distracted;
+    float distract_timer;
     public enum Direction
     {
         Down,
@@ -52,10 +54,25 @@ public class Enemy_AI : MonoBehaviour
     {
         if (!Game_Manager.instance.paused && Game_Manager.instance.started)
         {
+            if (is_distracted)
+            {
+                if(distract_timer <= 0)
+                {
+                    pathfinding = true;
+                    anim.speed = 1;
+                    is_distracted = false;
+                }
+                else
+                {
+                    distract_timer -= Time.deltaTime;
+                }
+            }
+
             if (pathfinding)
             {
                 Pathfind();
             }
+
             if (is_poisoned)
             {
                 if (num_poison_ticks > 0)
@@ -159,6 +176,14 @@ public class Enemy_AI : MonoBehaviour
         poison_damage = damage;
         num_poison_ticks = num_ticks;
         is_poisoned = true;
+    }
+
+    public void Distract(int distract_time)
+    {
+        pathfinding = false;
+        anim.speed = 0;
+        distract_timer = distract_time;
+        is_distracted = true;
     }
 
     void Faint()

@@ -242,6 +242,22 @@ public class Map_Manager : MonoBehaviour
         return path;
     }
 
+    public List<Node> GetPathNodes()
+    {
+        List<Node> nodes = new List<Node>();
+        for(int i = 0; i<max_x; i++)
+        {
+            for(int j = 0; j<max_y; j++)
+            {
+                if (grid[i, j].isPath)
+                {
+                    nodes.Add(grid[i, j]);
+                }
+            }
+        }
+        return nodes;
+    }
+
     Node GetNode(Vector3 pos)
     {
         int x = Mathf.RoundToInt(pos.x);

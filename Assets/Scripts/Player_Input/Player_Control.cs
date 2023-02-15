@@ -57,6 +57,14 @@ public class Player_Control : MonoBehaviour
             {
                 SelectObject(Placeable_Object.Potato);
             }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SelectObject(Placeable_Object.Corn);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                SelectObject(Placeable_Object.Apple);
+            }
             if (Input.GetKeyDown(KeyCode.S))
             {
                 SellOn();
