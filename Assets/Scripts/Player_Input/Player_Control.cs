@@ -53,7 +53,7 @@ public class Player_Control : MonoBehaviour
             {
                 SelectObject(Placeable_Object.Watermelon);
             }
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.B))
             {
                 SelectObject(Placeable_Object.Potato);
             }
@@ -64,6 +64,10 @@ public class Player_Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 SelectObject(Placeable_Object.Apple);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SelectObject(Placeable_Object.Pineapple);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
