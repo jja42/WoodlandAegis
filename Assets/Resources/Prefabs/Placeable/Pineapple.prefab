@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3843642128509133198}
   - component: {fileID: 3843642128509133199}
   - component: {fileID: 3843642128509133197}
+  - component: {fileID: 6003844797728852322}
   m_Layer: 8
   m_Name: Pineapple
   m_TagString: Untagged
@@ -97,7 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceaa5bafb7b5ea54db35be8ee90ac886, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sell_value: 0
+  sell_value: 15
   spawn: {fileID: 7400474970561239018, guid: 5376204dafb61ca41a5c7261ca8e5fca, type: 3}
-  spawn_max: 6
+  spawn_max: 8
   spawn_count: 0
+--- !u!58 &6003844797728852322
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3843642128509133200}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

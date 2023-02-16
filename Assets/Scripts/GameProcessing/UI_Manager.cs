@@ -15,6 +15,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject Loss;
     public GameObject Begin_Button;
     public GameObject Popup;
+    public GameObject Key;
     bool popup_active;
 
     // Start is called before the first frame update
@@ -82,5 +83,10 @@ public class UI_Manager : MonoBehaviour
         {
             StartCoroutine(Popup_Routine());
         }
+    }
+
+    public void Toggle_Key()
+    {
+        Key.SetActive(!Key.activeSelf);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2589996264284947793}
   - component: {fileID: 2589996264284947792}
   - component: {fileID: 2589996264284947794}
+  - component: {fileID: -429612673857305763}
   m_Layer: 8
   m_Name: Potato
   m_TagString: Untagged
@@ -97,7 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d871579b9f3527040a844005ef780ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sell_value: 0
+  sell_value: 30
   spawn: {fileID: 7617410702906252094, guid: d931bf4a0898a504eb3f99562231567e, type: 3}
-  spawn_max: 6
+  spawn_max: 4
   spawn_count: 0
+--- !u!58 &-429612673857305763
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2589996264284947799}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

@@ -183,6 +183,8 @@ MonoBehaviour:
   health: 150
   id: 0
   hp_slider: {fileID: 4662868910391540898}
+  is_poisoned: 0
+  is_distracted: 0
 --- !u!58 &1088163768127303455
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1017125537, guid: f54f78bdc481766488728e0d3456fb89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

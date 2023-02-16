@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Enemy_AI : MonoBehaviour
 {
     List<Vector3> path;
+    SpriteRenderer sr;
     Vector3 end;
     bool pathfinding;
     int current_node;
@@ -49,10 +50,11 @@ public class Enemy_AI : MonoBehaviour
         path.Add(end);
         ChangeDir();
         maxhealth = health;
+        sr = GetComponent<SpriteRenderer>();
     }
     protected virtual void Update()
     {
-        if (!Game_Manager.instance.paused && Game_Manager.instance.started)
+        if (!Game_Manager.instance.paused && Game_Manager.instance.started && !fainting)
         {
             if (is_distracted)
             {
@@ -214,6 +216,7 @@ public class Enemy_AI : MonoBehaviour
         else
         {
             pathfinding = false;
+            sr.enabled = false;
             Game_Manager.instance.TakeDamage(damage);
             Game_Manager.instance.RemoveEnemy(id);
             Destroy(gameObject, 1);

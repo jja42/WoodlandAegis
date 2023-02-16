@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  duration: 4
+  duration: 3
 --- !u!58 &1504481975
 CircleCollider2D:
   m_ObjectHideFlags: 0

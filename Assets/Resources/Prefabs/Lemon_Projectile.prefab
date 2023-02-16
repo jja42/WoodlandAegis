@@ -126,5 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   damage: 10
-  speed: 0
-  range: 0
+  speed: 10
+  range: 5

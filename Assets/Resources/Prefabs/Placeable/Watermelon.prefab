@@ -114,6 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b7df395304c0e74d824fe7fd728db77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sell_value: 0
+  sell_value: 15
   projectiles: {fileID: 5876355370861085076, guid: 2ac1e1de7f723424f96dc1ff9209d7a8, type: 3}
-  range: 1.75
+  range: 1.5

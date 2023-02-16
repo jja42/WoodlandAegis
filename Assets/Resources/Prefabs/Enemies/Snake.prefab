@@ -360,6 +360,8 @@ MonoBehaviour:
   health: 80
   id: 0
   hp_slider: {fileID: 5640660222263038355}
+  is_poisoned: 0
+  is_distracted: 0
 --- !u!212 &2479041896755106174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -400,7 +402,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1991847466, guid: 09adc8b6b1b450848b8f0249bf4788ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

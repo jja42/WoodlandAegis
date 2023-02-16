@@ -9,6 +9,8 @@ public class Corn_Spawn : MonoBehaviour
     public Sprite explosion;
     bool exploded;
     public int damage;
+    public float range;
+    public LayerMask enemy_Mask;
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -19,8 +21,16 @@ public class Corn_Spawn : MonoBehaviour
         {
             sr.sprite = explosion;
             exploded = true;
-            Enemy_AI enemy = collision.gameObject.GetComponent<Enemy_AI>();
-            enemy.TakeDamage(damage);
+            Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, range,enemy_Mask);
+            List<Enemy_AI> enemies = new List<Enemy_AI>();
+            foreach (Collider2D col in cols)
+            {
+                enemies.Add(col.GetComponent<Enemy_AI>());
+            }
+            foreach (Enemy_AI enemy in enemies)
+            {
+                enemy.TakeDamage(damage);
+            }
             parent.spawn_count--;
             Destroy(gameObject, 1);
         }

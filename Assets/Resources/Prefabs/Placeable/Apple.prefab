@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 808596456454793195}
   - component: {fileID: 808596456454793204}
   - component: {fileID: 808596456454793194}
+  - component: {fileID: 1718935081510954749}
   m_Layer: 8
   m_Name: Apple
   m_TagString: Untagged
@@ -97,7 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03edf1d545d45a343b7c055f6f607541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sell_value: 0
+  sell_value: 20
   spawn: {fileID: 718169612483323308, guid: 11560f3a61d91d44097aefc8f6a84da1, type: 3}
-  spawn_max: 6
+  spawn_max: 2
   spawn_count: 0
+--- !u!58 &1718935081510954749
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808596456454793205}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

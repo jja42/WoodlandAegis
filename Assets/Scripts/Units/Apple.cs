@@ -13,7 +13,7 @@ public class Apple : Unit
     float spawn_y_offset;
     protected override void Start()
     {
-        act_timeframe = 2.5f;
+        act_timeframe = 4f;
         nodes_in_range = Map_Manager.instance.GetUnitPathNeighbors(transform.position);
     }
 

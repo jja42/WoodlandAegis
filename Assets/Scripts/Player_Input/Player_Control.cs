@@ -12,10 +12,10 @@ public class Player_Control : MonoBehaviour
     {
         Root,
         Lemon,
-        Apple,
         Pineapple,
-        Watermelon,
+        Apple,
         Corn,
+        Watermelon,
         Potato,
         None
     }
@@ -68,6 +68,10 @@ public class Player_Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 SelectObject(Placeable_Object.Pineapple);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                UI_Manager.instance.Toggle_Key();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
