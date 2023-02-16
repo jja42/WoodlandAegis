@@ -10,7 +10,14 @@ public class Settings_Manager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
-        instance = this;
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
     private void Update()
     {

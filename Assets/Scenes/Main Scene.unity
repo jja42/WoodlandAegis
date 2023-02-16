@@ -990,7 +990,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &180340719
 GameObject:
@@ -9208,6 +9208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce1b4332ef015346a91a62b63ac50ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   current_round: 0
   health: 0
   nutrients: 0
@@ -11994,7 +11997,7 @@ Transform:
   - {fileID: 1597222298}
   - {fileID: 462684833}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1799576504
 GameObject:
@@ -12160,7 +12163,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1825085642
 GameObject:

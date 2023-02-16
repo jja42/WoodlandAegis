@@ -98,7 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bea6a08b3d00f4b961c68d7e9dab5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  enemy: {fileID: 0}
   sell_value: 40
+  range: 0
+  range_indicator: {fileID: 0}
   spawn: {fileID: 3579829373402834901, guid: a57f37d7d937d894a836e15d82427e00, type: 3}
   spawn_max: 4
   spawn_count: 0
@@ -112,9 +116,9 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.04, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.4

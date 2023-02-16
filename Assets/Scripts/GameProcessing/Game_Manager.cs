@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
 {
+    public LayerMask inputLayerMask;
     public static Game_Manager instance;
     public int current_round;
     public int health;
@@ -19,6 +20,7 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         instance = this;
+        Camera.main.eventMask = inputLayerMask;
         current_round = 1;
         health = 100;
         nutrients = 100;

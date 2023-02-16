@@ -5,8 +5,6 @@ using UnityEngine;
 public class Lemon : Unit
 {
     public GameObject projectile;
-    public float range;
-
     protected override void Act()
     {
         Shoot();

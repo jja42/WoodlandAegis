@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    protected Transform target;
-    protected Enemy_AI enemy;
+    public Transform target;
+    public Enemy_AI enemy;
     protected float act_timer;
     protected float act_timeframe;
     public int sell_value;
+    public float range;
+    public GameObject range_indicator;
 
+    private void OnMouseEnter()
+    {
+        if(range != 0)
+        {
+            range_indicator.SetActive(true);
+        }
+    }
+    private void OnMouseExit()
+    {
+        if (range_indicator != null)
+        {
+            range_indicator.SetActive(false);
+        }
+    }
     protected virtual void Start()
     {
         act_timeframe = 1.25f;
@@ -27,21 +43,6 @@ public class Unit : MonoBehaviour
                 act_timer += Time.deltaTime;
             }
         }
-    }
-
-    protected virtual void OnTriggerStay2D(Collider2D collision)
-    {
-        if (target == null)
-        {
-            target = collision.transform;
-            enemy = target.gameObject.GetComponent<Enemy_AI>();
-        }
-    }
-
-    protected virtual void OnTriggerExit2D(Collider2D collision)
-    {
-        target = null;
-        enemy = null;
     }
 
     protected virtual void Act()

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Watermelon : Unit
 {
     public GameObject projectiles;
-    public float range;
     protected override void Start()
     {
         act_timeframe = 1.75f;
