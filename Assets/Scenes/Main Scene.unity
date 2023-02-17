@@ -882,9 +882,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "A normally harmless fruit that has been primed for defense. Its rapid
     barrage makes it very effective.\n\nUse: A planted watermelon will shoot a broad
-    pattern of seeds at nearby enemies (Range 1)\n\nThe seeds will shoot out in a
-    circular pattern, dealing damage on contact \n(5 damage)\n\nNutrient Cost: 30 
-    Refund Value: 15"
+    pattern of seeds at nearby enemies (Range 1.75)\n\nThe seeds will shoot out in
+    a circular pattern, dealing damage on contact \n(5 damage)\n\nNutrient Cost:
+    30  Refund Value: 15"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e0a8921f28d7c84bb97b7ad652c9001, type: 2}
   m_sharedMaterial: {fileID: -6831403779746930973, guid: 0e0a8921f28d7c84bb97b7ad652c9001, type: 2}
@@ -4119,11 +4119,11 @@ MonoBehaviour:
 
 
     Use: A planted lemon will fire seeking projectiles at nearby enemies
-    (Range 2)
+    (Range 2.5)
 
 
-    Lemon projectiles will seek out enemies within the plant''s range
-    and deal damage on contact.
+    Lemon projectiles will seek out enemies within the plant''s
+    range and deal damage on contact.
 
     (10 damage)
 
@@ -6291,7 +6291,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8437,6 +8437,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 97a343289d5a62341bedf2393ad8ccb8, type: 2}
   - m_RefCount: 58
     m_Data: {fileID: 11400000, guid: 11ad370a60204734ea374d6493d9daa6, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 137
     m_Data: {fileID: -694702246, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
@@ -8452,10 +8454,12 @@ Tilemap:
     m_Data: {fileID: -736792240, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: 413093876, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 702148821, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 58
     m_Data: {fileID: -57330846, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 702148821, guid: dc603c4f1a39cf047928648e2f33b2cc, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 265
     m_Data:
@@ -8481,8 +8485,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -12, y: -7, z: 0}
-  m_Size: {x: 24, y: 14, z: 1}
+  m_Origin: {x: -13, y: -7, z: 0}
+  m_Size: {x: 26, y: 14, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -10855,7 +10859,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
