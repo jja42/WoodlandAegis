@@ -239,8 +239,30 @@
                 },
                 {
                     "name": "",
+                    "id": "e8b6f3c9-f914-4d0b-b20c-350a3e906051",
+                    "path": "<AndroidGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roots",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f35c4a6d-1f46-47df-8b5a-2969360f6a5a",
                     "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sell",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a700b534-20af-4679-976c-ea9da746a764",
+                    "path": "<AndroidGamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -261,8 +283,30 @@
                 },
                 {
                     "name": "",
+                    "id": "bfe66d1a-cee8-4781-baec-0e2d5eab8e17",
+                    "path": "<AndroidGamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Units",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a29071bd-3210-408c-94c9-eb77e7ce4baf",
                     "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Place",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83ad31aa-9bb9-45d5-a30c-3ec7f2c891ef",
+                    "path": "<AndroidGamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -571,6 +615,28 @@
                 },
                 {
                     "name": "",
+                    "id": "dd664402-76ce-42a9-8f83-6d6068a28cd2",
+                    "path": "<AndroidGamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79c3d2d7-6e37-4570-919d-ea7a8970896f",
+                    "path": "<AndroidGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
                     "path": "*/{Submit}",
                     "interactions": "",
@@ -584,6 +650,17 @@
                     "name": "",
                     "id": "cee9d15f-10f4-43a3-babd-cfc45d5e838a",
                     "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "236540ea-b68d-4fbb-9735-e8009fb0b89b",
+                    "path": "<AndroidGamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
