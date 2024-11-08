@@ -13,9 +13,10 @@ public class UI_Manager : MonoBehaviour
     public GameObject Pause_UI;
     public GameObject Victory;
     public GameObject Loss;
-    public GameObject Begin_Button;
+    public GameObject Intro_UI;
     public GameObject Popup;
     public GameObject Key;
+    public GameObject Info_UI;
     bool popup_active;
 
     // Start is called before the first frame update
@@ -46,26 +47,37 @@ public class UI_Manager : MonoBehaviour
         if (Game_Manager.instance.paused)
         {
             Pause_UI.SetActive(true);
+            Menu_Manager.instance.ChangeLayer(0);
+            Controller_Manager.instance.UIFocus();
         }
         else
         {
             Pause_UI.SetActive(false);
+            if (Game_Manager.instance.started)
+            {
+                Controller_Manager.instance.GameplayFocus();
+            }
         }
     }
 
     public void Begin()
     {
-        Begin_Button.SetActive(false);
+        Intro_UI.SetActive(false);
+        Controller_Manager.instance.GameplayFocus();
     }
 
     public void Victory_UI()
     {
         Victory.SetActive(true);
+        Menu_Manager.instance.ChangeLayer(0);
+        Controller_Manager.instance.UIFocus();
     }
 
     public void Loss_UI()
     {
         Loss.SetActive(true);
+        Menu_Manager.instance.ChangeLayer(0);
+        Controller_Manager.instance.UIFocus();
     }
 
     public IEnumerator Popup_Routine()
@@ -88,5 +100,32 @@ public class UI_Manager : MonoBehaviour
     public void Toggle_Key()
     {
         Key.SetActive(!Key.activeSelf);
+        if (Key.activeSelf)
+        {
+            Menu_Manager.instance.ChangeLayer(1);
+            Controller_Manager.instance.UIFocus();
+        }
+        else
+        {
+            Menu_Manager.instance.ChangeLayer(0);
+            if (Controller_Manager.instance.KeyButton)
+            {
+                Controller_Manager.instance.GameplayFocus();
+                Controller_Manager.instance.KeyButton = false;
+            }
+        }
+    }
+
+    public void Toggle_Info()
+    {
+        Info_UI.SetActive(!Info_UI.activeSelf);
+        if (Info_UI.activeSelf)
+        {
+            Menu_Manager.instance.ChangeLayer(1);
+        }
+        else
+        {
+            Menu_Manager.instance.ChangeLayer(0);
+        }
     }
 }

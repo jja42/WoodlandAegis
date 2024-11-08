@@ -103,7 +103,6 @@ public class Game_Manager : MonoBehaviour
     public void Begin()
     {
         started = true;
-        UI_Manager.instance.Begin();
     }
 
     public void RemoveEnemy(int id)

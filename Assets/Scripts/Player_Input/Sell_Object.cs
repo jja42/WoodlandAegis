@@ -12,7 +12,7 @@ public class Sell_Object : MonoBehaviour
     public bool Unit;
     private void Update()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = Controller_Manager.instance.transform.position;
         if (Vector3.Distance(transform.position, last_position) >= .25f)
         {
             last_position = transform.position;

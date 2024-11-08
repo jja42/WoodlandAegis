@@ -26,7 +26,7 @@ public class Player_Control : MonoBehaviour
 
     public SpriteRenderer selected_object_img;
     bool placement_mode;
-    bool sell_mode;
+    public bool sell_mode;
     Placeable_Object selected_object;
 
     private void Awake()
@@ -96,6 +96,22 @@ public class Player_Control : MonoBehaviour
         }
     }
 
+    public void Place()
+    {
+        if (placement_mode && selected.valid_pos)
+        {
+            PlaceObject(selected_object);
+        }
+    }
+
+    public void Sell()
+    {
+        if (sell.valid_pos)
+        {
+            SellObject(sell.transform.position);
+        }
+    }
+
     void SellObject(Vector3 pos)
     {
         int val = Map_Manager.instance.GetValue(sell.gameObject.transform.position, sell.Unit);
@@ -129,7 +145,7 @@ public class Player_Control : MonoBehaviour
         selected_object = Placeable_Object.None;
     }
 
-    void SellOn()
+    public void SellOn()
     {
         PlacementOff();
         sell_mode = true;

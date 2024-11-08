@@ -24,7 +24,7 @@ public class Pineapple : Unit
 
     void Spawn()
     {
-        if (spawn_count < spawn_max)
+        if (spawn_count < spawn_max && nodes_in_range.Count > 0)
         {
             spawn_index = Random.Range(0, nodes_in_range.Count);
             spawn_x_offset = Random.Range(-.25f, .25f);
