@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player_Control : MonoBehaviour
 {
+    public static Player_Control instance;
+
     public Selected_Object selected;
     public Sell_Object sell;
     public GameObject Roots;
     public GameObject Units;
-    enum Placeable_Object
+    public enum Placeable_Object
     {
         Root,
         Lemon,
@@ -26,6 +28,20 @@ public class Player_Control : MonoBehaviour
     bool placement_mode;
     bool sell_mode;
     Placeable_Object selected_object;
+
+    private void Awake()
+    {
+        //Standard Singleton Setup
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,66 +51,9 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Game_Manager.instance.Pause_Unpause();
-        }
-        if (!Game_Manager.instance.paused)
-        {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SelectObject(Placeable_Object.Root);
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                SelectObject(Placeable_Object.Lemon);
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                SelectObject(Placeable_Object.Watermelon);
-            }
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                SelectObject(Placeable_Object.Potato);
-            }
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SelectObject(Placeable_Object.Corn);
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                SelectObject(Placeable_Object.Apple);
-            }
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                SelectObject(Placeable_Object.Pineapple);
-            }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                UI_Manager.instance.Toggle_Key();
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                SellOn();
-            }
-            if (placement_mode)
-            {
-                if (Input.GetMouseButtonDown(0) && selected.valid_pos)
-                {
-                    PlaceObject(selected_object);
-                }
-            }
-            if (sell_mode)
-            {
-                if (Input.GetMouseButtonDown(0) && sell.valid_pos)
-                {
-                    SellObject(sell.transform.position);
-                }
-            }
-        }
     }
 
-    void SelectObject(Placeable_Object obj)
+    public void SelectObject(Placeable_Object obj)
     {
         if (selected_object == obj)
         {
@@ -149,7 +108,9 @@ public class Player_Control : MonoBehaviour
     {
         SellOff();
         placement_mode = true;
-        selected_object_img.sprite = Resources.Load<Sprite>("Placeable/" + selected_object.ToString());
+        GameObject obj = Resources.Load<GameObject>("Prefabs/Placeable/" + selected_object.ToString());
+        SpriteRenderer render = obj.GetComponent<SpriteRenderer>();
+        selected_object_img.sprite = render.sprite;
         if (selected_object == Placeable_Object.Root)
         {
             selected.Root = true;
