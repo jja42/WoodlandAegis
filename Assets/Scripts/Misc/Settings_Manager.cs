@@ -9,6 +9,8 @@ public class Settings_Manager : MonoBehaviour
     AudioListener listener;
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         DontDestroyOnLoad(this);
         if (instance != null && instance != this)
         {

@@ -16989,6 +16989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 2072245517}
+  KeyButton: 0
 --- !u!114 &2072245517
 MonoBehaviour:
   m_ObjectHideFlags: 0
